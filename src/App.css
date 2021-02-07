@@ -134,7 +134,7 @@ a:hover{
 
 .main-container{
   height: 34vh;
-  width:58vw;
+  min-width:58vw;
   display: flex;
   justify-content: center;
   /* align-content: flex-start; */
@@ -254,11 +254,11 @@ a:hover{
     border-radius: 10%;
     border: none;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     font-size: 1rem;
     color: #fff;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     /* float: right; */
     /* display: inline-block; */
   }
@@ -271,25 +271,26 @@ a:hover{
   }
 
   .nav-items-container ul, .closed-menu, .open-menu{
-    height: 20vh;
+    height: 23vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 7.5vh;
+    top: 8vh;
     left: 0;
     background-color: #212529;
-    z-index: 20;
+    /* z-index: 20; */
   }
 
   .nav-items-container li{
     display: flex;
 
-    z-index: 100;
+    /* z-index: 100; */
   }
 
   .conceal{
     height: 7.5vh;
+    /* z-index: 1000; */
   }
 
   .conceal.hidden{
@@ -312,22 +313,44 @@ a:hover{
     height: 10vh;
     width: 100%;
     background-color: #212529;
+    display: flex;
+    /* justify-content: space-between; */
   }
 
   .nav-bar-left{
     margin-left: 10vw;
+    z-index: 100;
   }
 
   .nav-bar-right{
     margin-right: 10vw;
     display: flex;
+    /* justify-content: flex-start; */
     align-items: center;
+    z-index: 100;
   }
 
-  ul.drop-down li{
+  .drop-down{
     display: none;
   }
 
+  .nav-li{
+    margin: 5px 0px 2px 20px;
+    /* z-index: 2000; */
+  }
+
+  
+  .main-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .message{
+    font-size: 70px;
+    
+  }
+  
   .open-menu{
     animation: openMenu .5s forwards linear;
     /* display: flex;
@@ -335,10 +358,9 @@ a:hover{
   }
   
   .close-menu{
-    animation: closedMenu .5s forwards linear;
     display: none;
+    animation: closedMenu .5s forwards linear;
   }
-  
   
   @keyframes openMenu {
     from {
@@ -349,7 +371,7 @@ a:hover{
     }
   }
   
-  @keyframes closed{
+  @keyframes closeMenu{
     from{
       height: 150px;
     }

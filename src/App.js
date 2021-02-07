@@ -18,18 +18,22 @@ class App extends Component {
   //   })
 // }
 
-dropMenuHandler = () => {
+dropMenuHandler = () => { 
+  let menu
   if( this.state.dropMenu === 'close-menu' ) {
-    this.setState({
-      dropMenu: 'open-menu'
-    })
+    menu = 'open-menu'
   } else {
-    this.setState({
-      dropMenu: 'close-menu'
-    })
-  } 
-}
+    menu = 'close-menu'
+  }
+  this.setState({
+    dropMenu: menu
+  })
+ }
 
+componentDidUpdate(prevProps, prevState) {
+  if( prevState.dropMenu !== this.state.dropMenu )
+  console.log(prevState, this.state.dropMenu)
+}
 
 render() {
   return (
@@ -50,17 +54,17 @@ render() {
               </section>
             </div>
             <div className="nav-bar-right">
-              <section className="nav-items-container" >
+              <section className={`nav-items-container ${this.state.dropMenu}`} >
                 {/* <ul className={ `transition-medium conceal ${ !this.state.toggleShow ? 'hidden' : '' }` }> */}
-                <ul className={ `drop-down ${ this.state.dropMenu }` }>
-                  <li className={ `nav-li ${ this.state.dropMenu }` }><a href="#services">SERVICES</a></li>
-                  <li className={ `nav-li ${ this.state.dropMenu }` }><a href="#portfolio">PORTFOLIO</a></li>
-                  <li className={ `nav-li ${ this.state.dropMenu }` }><a href="#about">ABOUT</a></li>
-                  <li className={ `nav-li ${ this.state.dropMenu }` }><a href="#team">TEAM</a></li>
-                  <li className={ `nav-li ${ this.state.dropMenu }` }><a href="#contact">CONTACT</a></li>
+                <ul className={ `drop-down` }>
+                  <li className={ `nav-li` }><a href="#services">SERVICES</a></li>
+                  <li className={ `nav-li` }><a href="#portfolio">PORTFOLIO</a></li>
+                  <li className={ `nav-li` }><a href="#about">ABOUT</a></li>
+                  <li className={ `nav-li` }><a href="#team">TEAM</a></li>
+                  <li className={ `nav-li` }><a href="#contact">CONTACT</a></li>
                 </ul>
               </section>
-              <button className="hamburger" onClick={ this.dropMenuHandler } >
+              <button className="hamburger" onClick={ () => this.dropMenuHandler() } >
                 Menu <svg className="svg-inline--fa fa-bars fa-w-14 ml-1 hammy" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
                 </path></svg>
               </button>
